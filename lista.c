@@ -234,7 +234,28 @@ void liberaLista(listaStruct lista){
                 free(node);
             node = aux;
         }
-    free(lista); 
+}
+
+void liberaListas(listaStruct lista){
+    listaCidade *list = (listaCidade*)lista; 
+
+    liberaLista(list->listaCirculos);
+    liberaLista(list->listaHidrantes);
+    liberaLista(list->listaRetangulos);
+    liberaLista(list->listaQuadras);
+    liberaLista(list->listaRadios);
+    liberaLista(list->listaTexto);
+    liberaLista(list->listaLinhas);
+    liberaLista(list->listaSemaforos);
+
+   free(list->listaCirculos);
+   free(list->listaHidrantes);
+   free(list->listaRetangulos);
+   free(list->listaQuadras);
+   free(list->listaRadios);
+   free(list->listaTexto);
+   free(list->listaLinhas);
+   free(list->listaSemaforos);
 }
 
 Node getFirst(listaStruct lista){
