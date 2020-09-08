@@ -15,7 +15,17 @@ int main (){
     Cidade listaCidade = criaCidade();
     tipo elemento;
     
+    openGeo(listaCidade);
+    openQry(listaCidade);
 
+    liberaLista(getListaCirculos(listaCidade));
     liberaLista(getListaRadios(listaCidade));
-    
+    liberaLista(getListaHidrantes(listaCidade));
+    liberaLista(getListaQuadras(listaCidade));
+    liberaLista(getListaSemaforos(listaCidade));
+    liberaLista(getListaTexto(listaCidade));
+    liberaLista(getListaLinhas(listaCidade));
+    liberaLista(getListaRetangulos(listaCidade));
+
+    free(listaCidade);
 }

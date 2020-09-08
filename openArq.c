@@ -94,8 +94,10 @@ void openGeo(Cidade listacidade)
 
                 else if((strcmp(comando, "q") == 0) && cont_nq < nq){
                     fscanf(arq, "%s %lf %lf %lf %lf", cep, &x, &y ,&w ,&h);
+                    //printf("%s %lf %lf %lf %lf\n", cep, x, y ,w ,h);
                     desenhaQuadra(svg, x, y, w, h, cfillQ, cstrkQ, sw);
                     elemento = criaQuadra(cep, x, y, w, h, cfillQ, cstrkQ);
+                    printf("%s %lf %lf %lf %lf\n", getQuadraCep(elemento), getQuadraX(elemento), getQuadraY(elemento) ,getQuadraW(elemento) ,getQuadraH(elemento));
                     insereElemento(getListaQuadras(listacidade), elemento);
                     cont_nq += 1;
                 }
@@ -146,6 +148,10 @@ void openGeo(Cidade listacidade)
             }
 
             fprintf(svg, "</svg>");
+
+
+            printf("\n\n");
+            imprimeLista(getListaQuadras(listacidade), 'q');
         
         
     fclose(svg);
