@@ -151,3 +151,7 @@ void openGeo(Cidade listacidade)
     fclose(svg);
    fclose(arq);
 }
+
+void openQry(){
+    
+}
