@@ -48,6 +48,46 @@ Cidade criaCidade(){
     return lista;
 }
 
+Cidade getListaQuadras(Cidade lista){
+    listaCidade *list = (listaCidade*)lista;
+    return list->listaQuadras;
+}
+
+Cidade getListaRadios(Cidade lista){
+    listaCidade *list = (listaCidade*)lista;
+    return list->listaRadios;
+}
+
+Cidade getListaSemaforos(Cidade lista){
+    listaCidade *list = (listaCidade*)lista;
+    return list->listaSemaforos;
+}
+
+Cidade getListaHidrantes(Cidade lista){
+    listaCidade *list = (listaCidade*)lista;
+    return list->listaHidrantes;
+}
+
+Cidade getListaCirculos(Cidade lista){
+    listaCidade *list = (listaCidade*)lista;
+    return list->listaCirculos;
+}
+
+Cidade getListaLinhas(Cidade lista){
+    listaCidade *list = (listaCidade*)lista;
+    return list->listaLinhas;
+}
+
+Cidade getListaRetangulos(Cidade lista){
+    listaCidade *list = (listaCidade*)lista;
+    return list->listaRetangulos;
+}
+
+Cidade getListaTexto(Cidade lista){
+    listaCidade *list = (listaCidade*)lista;
+    return list->listaTexto;
+}
+
 listaStruct insereElemento(listaStruct lista, tipo elemento){
     Lista *list = (Lista*)lista;
     
@@ -225,4 +265,33 @@ tipo getElemento(Node elemento){
     No *node = (No*)elemento;
 
     return node->elemento; 
+}
+
+void imprimeLista(listaStruct l, char c){
+    Lista *list = (Lista*)l;
+    No *node = list->primeiro;
+        while(node != NULL){
+            if(c == 'r'){
+                printf("%s, %lf, %lf, %s, %s\n", getRadioId(node->elemento), getRadioX(node->elemento), getRadioY(node->elemento), getRadioCFill(node->elemento), getRadioCStroke(node->elemento));
+            }
+            else if(c == 'h'){
+                printf("%s, %lf, %lf, %s, %s\n", getHidranteId(node->elemento), getHidranteX(node->elemento), getHidranteY(node->elemento), getHidranteCFill(node->elemento), getHidranteCStroke(node->elemento));
+            }
+            else if(c == 'q'){
+                printf("%s, %lf, %lf, %lf, %lf,%s, %s\n", getQuadraCep(node->elemento), getQuadraX(node->elemento), getQuadraY(node->elemento),  getQuadraW(node->elemento),  getQuadraH(node->elemento), getQuadraCFill(node->elemento), getQuadraCStroke(node->elemento));
+            }
+            else if(c == 's'){
+                printf("%s, %lf, %lf, %s, %s\n", getSemaforoId(node->elemento), getSemaforoX(node->elemento), getSemaforoY(node->elemento), getSemaforoCFill(node->elemento), getSemaforoCStroke(node->elemento));
+            }
+            else if(c == 'c'){
+                printf("%d, %lf, %lf, %lf, %s, %s\n", getCirculoId(node->elemento), getCirculoR(node->elemento), getCirculoX(node->elemento), getCirculoY(node->elemento), getCirculoCorb(node->elemento), getCirculoCorp(node->elemento));
+            }
+            else if(c == 'a'){
+                printf("%d, %lf, %lf, %lf, %lf, %s, %s\n", getRetanguloId(node->elemento), getRetanguloW(node->elemento), getRetanguloH(node->elemento), getRetanguloX(node->elemento), getRetanguloY(node->elemento), getRetanguloCorb(node->elemento), getRetanguloCorp(node->elemento));
+            }
+            else if(c == 't'){
+                printf("%d, %lf, %lf, %s, %s, %s\n", getTextoId(node->elemento), getTextoX(node->elemento), getTextoY(node->elemento), getTextoCorb(node->elemento), getTextoCorp(node->elemento), getTextoText(node->elemento));
+            }
+            node = node->prox;
+        }
 }

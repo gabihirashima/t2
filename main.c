@@ -12,5 +12,10 @@
 #include "semaforo.h"
 
 int main (){
-    
+    Cidade listaCidade = criaCidade();
+    tipo elemento;
+
+    elemento = criaRadio("rb1.2", 2.3, 32.3, "rosa", "amarelo");
+    insereElemento(getListaRadios(listaCidade), elemento);
+
 }

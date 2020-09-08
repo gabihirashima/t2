@@ -13,6 +13,22 @@ listaStruct criaLista();
 
 Cidade criaCidade();
 
+Cidade getListaQuadras(Cidade lista);
+
+Cidade getListaRadios(Cidade lista);
+
+Cidade getListaSemaforos(Cidade lista);
+
+Cidade getListaHidrantes(Cidade lista);
+
+Cidade getListaCirculos(Cidade lista);
+
+Cidade getListaLinhas(Cidade lista);
+
+Cidade getListaRetangulos(Cidade lista);
+
+Cidade getListaTexto(Cidade lista);
+
 listaStruct insereElemento(listaStruct lista, tipo elemento);
 
 listaStruct insertBefore(listaStruct lista, tipo elemento, tipo elemento_2);
@@ -32,5 +48,7 @@ Node getPrevious(Node elemento);
 Node getNext(Node elemento);
 
 tipo getElemento(Node elemento);
+
+void imprimeLista(listaStruct l, char c);
 
 #endif
