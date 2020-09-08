@@ -42,7 +42,7 @@ listaStruct criaLista(){
 
 Cidade criaCidade(){
     listaCidade *lista;
-    lista = (listaCidade*)malloc(sizeof(listaCidade*));
+    lista = (listaCidade*)malloc(sizeof(listaCidade));
 
     lista->listaQuadras = criaLista();
     lista->listaRadios = criaLista();
@@ -234,6 +234,7 @@ void liberaLista(listaStruct lista){
                 free(node);
             node = aux;
         }
+    free(lista);
 }
 
 
