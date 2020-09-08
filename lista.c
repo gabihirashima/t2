@@ -315,13 +315,49 @@ int tamanhoLista(listaStruct lista){
     return tamanho;
 }
 
-Node comparaId(listaStruct lista, Node no, char *id){
+Node comparaIdH(listaStruct lista, Node no, char *id){
     tipo elemento;
          do{
             elemento = getElemento(no);
                 if(strcmp(getIdHidrante(elemento), id) == 0){
                     return elemento;
-                }  
+                }
+            no = getNext(no);
+        }while(no != NULL);
+    return NULL;
+}
+
+Node comparaIdQ(listaStruct lista, Node no, char *id){
+    tipo elemento;
+         do{
+            elemento = getElemento(no);
+                if(strcmp(getCepQuadra(elemento), id) == 0){
+                    return elemento;
+                }
+            no = getNext(no);
+        }while(no != NULL);
+    return NULL;
+}
+
+Node comparaIdR(listaStruct lista, Node no, char *id){
+    tipo elemento;
+         do{
+            elemento = getElemento(no);
+                if(strcmp(getIdRadio(elemento), id) == 0){
+                    return elemento;
+                }
+            no = getNext(no);
+        }while(no != NULL);
+    return NULL;
+}
+
+Node comparaIdS(listaStruct lista, Node no, char *id){
+    tipo elemento;
+         do{
+            elemento = getElemento(no);
+                if(strcmp(getIdSemaforo(elemento), id) == 0){
+                    return elemento;
+                }
             no = getNext(no);
         }while(no != NULL);
     return NULL;
