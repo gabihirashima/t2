@@ -2,6 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include "lista.h"
+#include "formaC.h"
+#include "formaL.h"
+#include "formaR.h"
+#include "formaT.h"
+#include "hidrante.h"
+#include "quadra.h"
+#include "radio.h"
+#include "semaforo.h"
 
 typedef struct no{
     void *elemento;
@@ -272,25 +280,25 @@ void imprimeLista(listaStruct l, char c){
     No *node = list->primeiro;
         while(node != NULL){
             if(c == 'r'){
-                printf("%s, %lf, %lf, %s, %s\n", getRadioId(node->elemento), getRadioX(node->elemento), getRadioY(node->elemento), getRadioCFill(node->elemento), getRadioCStroke(node->elemento));
+                printf("%s, %lf, %lf, %s, %s\n", getRadioId(getElemento(node)), getRadioX(getElemento(node)), getRadioY(getElemento(node)), getRadioCFill(getElemento(node)), getRadioCStroke(getElemento(node)));
             }
             else if(c == 'h'){
-                printf("%s, %lf, %lf, %s, %s\n", getHidranteId(node->elemento), getHidranteX(node->elemento), getHidranteY(node->elemento), getHidranteCFill(node->elemento), getHidranteCStroke(node->elemento));
+                printf("%s, %lf, %lf, %s, %s\n", getHidranteId(getElemento(node)), getHidranteX(getElemento(node)), getHidranteY(getElemento(node)), getHidranteCFill(getElemento(node)), getHidranteCStroke(getElemento(node)));
             }
             else if(c == 'q'){
-                printf("%s, %lf, %lf, %lf, %lf,%s, %s\n", getQuadraCep(node->elemento), getQuadraX(node->elemento), getQuadraY(node->elemento),  getQuadraW(node->elemento),  getQuadraH(node->elemento), getQuadraCFill(node->elemento), getQuadraCStroke(node->elemento));
+                printf("%s, %lf, %lf, %lf, %lf,%s, %s\n", getQuadraCep(getElemento(node)), getQuadraX(getElemento(node)), getQuadraY(getElemento(node)),  getQuadraW(getElemento(node)),  getQuadraH(getElemento(node)), getQuadraCFill(getElemento(node)), getQuadraCStroke(getElemento(node)));
             }
             else if(c == 's'){
-                printf("%s, %lf, %lf, %s, %s\n", getSemaforoId(node->elemento), getSemaforoX(node->elemento), getSemaforoY(node->elemento), getSemaforoCFill(node->elemento), getSemaforoCStroke(node->elemento));
+                printf("%s, %lf, %lf, %s, %s\n", getSemaforoId(getElemento(node)), getSemaforoX(getElemento(node)), getSemaforoY(getElemento(node)), getSemaforoCFill(getElemento(node)), getSemaforoCStroke(getElemento(node)));
             }
             else if(c == 'c'){
-                printf("%d, %lf, %lf, %lf, %s, %s\n", getCirculoId(node->elemento), getCirculoR(node->elemento), getCirculoX(node->elemento), getCirculoY(node->elemento), getCirculoCorb(node->elemento), getCirculoCorp(node->elemento));
+                printf("%d, %lf, %lf, %lf, %s, %s\n", getCirculoId(getElemento(node)), getCirculoR(getElemento(node)), getCirculoX(getElemento(node)), getCirculoY(getElemento(node)), getCirculoCorb(getElemento(node)), getCirculoCorp(getElemento(node)));
             }
             else if(c == 'a'){
-                printf("%d, %lf, %lf, %lf, %lf, %s, %s\n", getRetanguloId(node->elemento), getRetanguloW(node->elemento), getRetanguloH(node->elemento), getRetanguloX(node->elemento), getRetanguloY(node->elemento), getRetanguloCorb(node->elemento), getRetanguloCorp(node->elemento));
+                printf("%d, %lf, %lf, %lf, %lf, %s, %s\n", getRetanguloId(getElemento(node)), getRetanguloW(getElemento(node)), getRetanguloH(getElemento(node)), getRetanguloX(getElemento(node)), getRetanguloY(getElemento(node)), getRetanguloCorb(getElemento(node)), getRetanguloCorp(getElemento(node)));
             }
             else if(c == 't'){
-                printf("%d, %lf, %lf, %s, %s, %s\n", getTextoId(node->elemento), getTextoX(node->elemento), getTextoY(node->elemento), getTextoCorb(node->elemento), getTextoCorp(node->elemento), getTextoText(node->elemento));
+                printf("%d, %lf, %lf, %s, %s, %s\n", getTextoId(getElemento(node)), getTextoX(getElemento(node)), getTextoY(getElemento(node)), getTextoCorb(getElemento(node)), getTextoCorp(getElemento(node)), getTextoText(getElemento(node)));
             }
             node = node->prox;
         }
