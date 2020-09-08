@@ -158,7 +158,7 @@ void openQry(Cidade listaCidade){
 
     char comando[6];
     char teste[20];
-    char id;
+    char id[20];
     char cStrk[20];
     char cFill[20];
     double r;
