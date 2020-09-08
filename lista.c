@@ -303,3 +303,14 @@ void imprimeLista(listaStruct l, char c){
             node = node->prox;
         }
 }
+
+int tamanhoLista(listaStruct l){
+ Lista *list = (Lista*)l;
+ int tamanho = 0;
+    No *node = list->primeiro;
+        while(node != NULL){
+            tamanho += 1;
+            node = node->prox;
+        }
+    return tamanho;
+}
