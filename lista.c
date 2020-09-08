@@ -304,8 +304,8 @@ void imprimeLista(listaStruct l, char c){
         }
 }
 
-int tamanhoLista(listaStruct l){
- Lista *list = (Lista*)l;
+int tamanhoLista(listaStruct lista){
+ Lista *list = (Lista*)lista;
  int tamanho = 0;
     No *node = list->primeiro;
         while(node != NULL){
@@ -313,4 +313,16 @@ int tamanhoLista(listaStruct l){
             node = node->prox;
         }
     return tamanho;
+}
+
+Node comparaId(listaStruct lista, Node no, char *id){
+    tipo elemento;
+         do{
+            elemento = getElemento(no);
+                if(strcmp(getIdHidrante(elemento), id) == 0){
+                    return elemento;
+                }  
+            no = getNext(no);
+        }while(no != NULL);
+    return NULL;
 }
