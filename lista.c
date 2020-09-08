@@ -141,6 +141,39 @@ listaStruct removeElemento(listaStruct lista, tipo elemento){
          No *aux_1; 
          No *aux_2;
          No *aux_3;
+
+            while(inicio != NULL){
+            if(inicio == elemento){
+               if(inicio == list->primeiro){
+                    aux_1 = inicio;
+                    aux_2 = inicio->prox;
+                    aux_2->ant = NULL;
+                    list->primeiro = aux_2;
+                    free(aux_1->elemento);
+                    free(aux_1);
+                    }
+                else if(inicio == list->ultimo){
+                    aux_1 = inicio;
+                    aux_2 = inicio->ant;
+                    aux_2->prox = NULL;
+                    list->ultimo = aux_2;
+                    free(aux_1->elemento);
+                    free(aux_1);
+                    }
+                else{
+                    aux_1 = inicio;
+                    aux_2 = inicio->prox;
+                    aux_3 = inicio->ant;
+                    aux_2->ant = aux_3;
+                    aux_3->prox = aux_2;
+                    free(aux_1->elemento);
+                    free(aux_1);
+                    }
+                return list;     
+            }    
+            inicio = inicio->prox;
+        }
+    return NULL;
 }
 
 void liberaLista(listaStruct lista){
