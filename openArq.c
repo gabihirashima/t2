@@ -215,7 +215,7 @@ void openQry(Cidade listacidade, char *entradaQry, char *saidaQry){
                     else{
                         strcpy(id, teste);
                         fscanf(entrada, "%lf", &r);
-                            delquadras(listacidade, saidaTxt, saidaSvg, 0, id, r);
+                            delQuadras(listacidade, saidaTxt, saidaSvg, 0, id, r);
                     }
             }
 
@@ -241,8 +241,6 @@ void openQry(Cidade listacidade, char *entradaQry, char *saidaQry){
         
         }
         
-
-
 
     fclose(saidaSvg);
     fclose(saidaTxt);
@@ -308,6 +306,8 @@ void tratamentoArquivos(char arquivoGeo[], char arquivoQry[], char diretorio[], 
                     saidaQry =  (char*)malloc( ( (strlen(pastaSaida)+strlen(nomeArquivoGeo)+strlen(nomeArquivoQry) )+4 )* sizeof(char) );
                     sprintf(saidaQry, "%s/%s-%s", pastaSaida, nomeArquivoGeo, nomeArquivoQry);
                     /*printf("\n\nsaida Qry: %s", saidaQry);*/
+
+                    openQry(listaCidade, arquivoQry, saidaQry);
                 
                 free(saidaQry);
                 free(caminhoQry);
