@@ -25,4 +25,6 @@ char *getCirculoCorb(Circulo);
 /*Recebe o endereço de uma lista de circulos e retorna a Corp do elemento*/
 char *getCirculoCorp(Circulo);
 
+char *getCirculoSw(Circulo circulo);
+
 #endif

@@ -87,7 +87,7 @@ void openGeo(Cidade listacidade, char *nomeGeo, char *saidaSvg)
                 else if((strcmp(comando, "r") == 0) && cont_i < i){
                     fscanf(arq, "%d %lf %lf %lf %lf %s %s", &id_forma, &w, &h, &x, &y, corb, corp); 
                     desenhaRetangulo(svg, x, y, w, h, 0, 0, corp, corb, rw);
-                    elemento = criaRetangulo(id_forma, w, h, x, y, corb, corp, rw);
+                    elemento = criaRetangulo(id_forma, w, h, x, y, 0, 0, corb, corp, rw);
                     insereElemento(getListaRetangulos(listacidade), elemento);
                     cont_i += 1;
                 }
@@ -268,11 +268,6 @@ void tratamentoArquivos(char arquivoGeo[], char arquivoQry[], char diretorio[], 
 
     /*printf("\n %s %s %s %s", diretorio, arquivoGeo, arquivoQry, pastaSaida);*/
 
-            nomeArquivoGeo = (char*)malloc( ( ( strlen(arquivoGeo) )+1 )*sizeof(char) );
-            strcpy(nomeArquivoGeo, arquivoGeo);
-            nomeArquivoGeo = strtok(nomeArquivoGeo, "."); /*vai retornar somente o nome anterior ao .geo*/ 
-            /*printf("\n\nnome geo formatado: %s", nomeArquivoGeo);*/
-
             if (diretorio != NULL){/*Se foi passado um argumento de diretório*/
                 caminhoGeo = (char*)malloc( ( ( strlen(diretorio) + strlen(arquivoGeo) )+3 )* sizeof(char) );
                 sprintf(caminhoGeo, "%s/%s", diretorio, arquivoGeo);
@@ -292,29 +287,36 @@ void tratamentoArquivos(char arquivoGeo[], char arquivoQry[], char diretorio[], 
                         strcpy(caminhoQry, arquivoQry);
                         /*printf("\n\ncaminho Qry sem argumento de diretorio: %s", caminhoQry);*/
                     }
-
             }
+
+                nomeArquivoGeo = (char*)malloc( ( ( strlen(arquivoGeo) )+1 )*sizeof(char) );
+                arquivoGeo = trataNome(nomeArquivoGeo);
 
                 saidaSvg =  (char*)malloc( ( (strlen(pastaSaida)+strlen(nomeArquivoGeo) )+8 )* sizeof(char) );
                 sprintf(saidaSvg, "%s/%s.svg", pastaSaida, nomeArquivoGeo);
                 /*printf("\n\nsaida Svg: %s", saidaSvg);*/
 
-                openGeo(listaCidade, arquivoGeo, saidaSvg);
+                openGeo(listaCidade, caminhoGeo, saidaSvg);
+
+                free(caminhoGeo);
+                free(saidaSvg);
 
             if (arquivoQry != NULL){   
+                    nomeArquivoQry = (char*)malloc( (strlen(arquivoQry)+1) * sizeof(char) );
                     nomeArquivoQry = trataNome(arquivoQry);
                     saidaQry =  (char*)malloc( ( (strlen(pastaSaida)+strlen(nomeArquivoGeo)+strlen(nomeArquivoQry) )+4 )* sizeof(char) );
                     sprintf(saidaQry, "%s/%s-%s", pastaSaida, nomeArquivoGeo, nomeArquivoQry);
                     /*printf("\n\nsaida Qry: %s", saidaQry);*/
 
-                    openQry(listaCidade, arquivoQry, saidaQry);
-                
-                free(saidaQry);
-                free(caminhoQry);
+                    openQry(listaCidade, caminhoQry, saidaQry);
+
+                    free(nomeArquivoQry);
+                    free(caminhoQry);
+                    free(saidaQry);
             }
+
         free(nomeArquivoGeo);
-        free(caminhoGeo);
-        free(saidaSvg);
+
 
     liberaLista(getListaCirculos(listaCidade));
     liberaLista(getListaRadios(listaCidade));
