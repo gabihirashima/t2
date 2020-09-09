@@ -14,7 +14,7 @@
 #include "svg.h"
 #include "qry.h"
 
-void openGeo(Cidade listacidade)
+void openGeo(Cidade listacidade, char *nomeGeo, char *saidaSvg)
 {
     FILE *arq, *svg; 
 
@@ -54,8 +54,8 @@ void openGeo(Cidade listacidade)
 
     tipo elemento;
 
-    arq = fopen("b1-bsc-000.geo", "r");
-    svg = fopen("teste.svg", "w+");
+    arq = fopen(nomeGeo, "r");
+    svg = fopen(saidaSvg, "w+");
 
         if(arq == NULL){
             printf("Erro ao abrir o arquivo Geo!!");
@@ -160,7 +160,7 @@ void openGeo(Cidade listacidade)
    fclose(arq);
 }
 
-void openQry(Cidade listacidade){
+void openQry(Cidade listacidade, char *entradaQry, char *saidaQry){
 
     FILE *entrada, *saidaSvg, *saidaTxt;
 
@@ -189,9 +189,15 @@ void openQry(Cidade listacidade){
 
     tipo elemento;
 
-    entrada = fopen("del.qry", "r");
-    saidaTxt = fopen("saidaQry.txt", "w+");
-    saidaSvg = fopen("saidaSvg.svg", "w+");
+    char *saidaSvgQry = malloc(strlen(saidaQry)+5);
+    char *saidaTxtQry = malloc(strlen(saidaQry)+5);
+
+    sprintf(saidaTxtQry, "%s.txt", saidaQry);
+    sprintf(saidaSvgQry, "%s.svg", saidaQry);
+
+    entrada = fopen(entradaQry, "r");
+    saidaTxt = fopen(saidaTxtQry, "w+");
+    saidaSvg = fopen(saidaSvgQry, "w+");
 
         while(fscanf(entrada, "%s", comando)!=EOF){
 
@@ -211,18 +217,7 @@ void openQry(Cidade listacidade){
 
             else if(strcmp(comando, "del") == 0){
                 fscanf(entrada, "%s", id);
-                    if(comparaIdH(noH, id) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um hidrante*/
-                        printf("\nIDH");
-                    }
-                    else if(comparaIdQ(noQ, id) != 0){/*Se compara Id retornar diferenete de NULL, o elemento é uma quadra*/
-                        printf("\nIDQ");
-                    }
-                    else if(comparaIdR(noR, id) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um rádio*/
-                        printf("\nIDR");
-                    }
-                    else if(comparaIdS(noS, id) != 0){/*Se comparaId retornar diferente de NULL, o elemento é uma quadra*/
-                        printf("\nIDS");
-                    }
+                   
             }
 
             else if(strcmp(comando, "cbq") == 0){
@@ -233,18 +228,6 @@ void openQry(Cidade listacidade){
             else if(strcmp(comando, "crd?") == 0){
                 fscanf(entrada, "%s", id);
                 
-                    if(comparaIdH(noH, id) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um hidrante*/
-                        printf("\nIDH");
-                    }
-                    else if(comparaIdQ(noQ, id) != 0){/*Se compara Id retornar diferenete de NULL, o elemento é uma quadra*/
-                        printf("\nIDQ");
-                    }
-                    else if(comparaIdR(noR, id) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um rádio*/
-                        printf("\nIDR");
-                    }
-                    else if(comparaIdS(noS, id) != 0){/*Se comparaId retornar diferente de NULL, o elemento é uma quadra*/
-                        printf("\nIDS");
-                    }
             }
 
             else if(strcmp(comando, "car") == 0){
