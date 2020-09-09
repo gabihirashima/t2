@@ -3,8 +3,8 @@
 
 #include "lista.h"
 
-void openGeo(Cidade listacidade);
+void openGeo(Cidade listacidade, char *nomeGeo, char *saidaSvg);
 
-void openQry(Cidade listacidade);
+void openQry(Cidade listacidade, char *entradaQry, char *saidaQry);
 
 #endif
