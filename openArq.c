@@ -199,12 +199,12 @@ void openQry(Cidade listacidade){
                 fscanf(entrada, "%s", teste);
 
                     if(strcmp(teste, "#") == 0){
-                        fscanf(entrada, "%s %lf", id, r);
+                        fscanf(entrada, "%s %lf", id, &r);
                             delQuadras(listacidade, saidaTxt, saidaSvg, 1, id, r);
                     }
                     else{
                         strcpy(id, teste);
-                        fscanf(entrada, "%lf", r);
+                        fscanf(entrada, "%lf", &r);
                             delQuadras(listacidade, saidaTxt, saidaSvg, 1, id, r);
                     }
             }
@@ -226,7 +226,7 @@ void openQry(Cidade listacidade){
             }
 
             else if(strcmp(comando, "cbq") == 0){
-                fscanf(entrada, "%lf %lf %lf %s", x, y, r, cStrk);
+                fscanf(entrada, "%lf %lf %lf %s", &x, &y, &r, cStrk);
 
             }
 
@@ -248,7 +248,7 @@ void openQry(Cidade listacidade){
             }
 
             else if(strcmp(comando, "car") == 0){
-                fscanf(entrada, "%lf %lf %lf %lf", x, y, w, h);
+                fscanf(entrada, "%lf %lf %lf %lf", &x, &y, &w, &h);
             }
         
         }
