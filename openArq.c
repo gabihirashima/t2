@@ -158,7 +158,6 @@ void openGeo(Cidade listacidade)
 
 
             imprimeLista(getListaQuadras(listacidade), 'q');
-            criaSvgGeo(listacidade, arq, sw, cw, rw);
           
     fclose(svg);
    fclose(arq);
