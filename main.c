@@ -101,9 +101,6 @@ int main (int argc, char *argv[]){
 
                 Cidade listaCidade = criaCidade();
                 tipo elemento;
-                
-                openGeo(listaCidade);
-                openQry(listaCidade);
 
             if (arquivoQry != NULL){
                  char *tratamento = NULL;   
