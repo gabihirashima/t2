@@ -200,12 +200,12 @@ void openQry(Cidade listacidade){
 
                     if(strcmp(teste, "#") == 0){
                         fscanf(entrada, "%s %lf", id, &r);
-                            delQuadras(listacidade, saidaTxt, saidaSvg, 1, id, r);
+                            
                     }
                     else{
                         strcpy(id, teste);
                         fscanf(entrada, "%lf", &r);
-                            delQuadras(listacidade, saidaTxt, saidaSvg, 1, id, r);
+                            
                     }
             }
 
