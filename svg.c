@@ -35,7 +35,7 @@ void desenhaTexto(FILE *saida, double x, double y, char *corb, char *corp, char 
 }
 
 void desenhaRetangulo(FILE *saida, double x, double y, double w, double h, double rx, double ry, char *corp, char *corb, char *rw){
-     fprintf(saida, "<rect x=\"%lf\" y=\"%lf\" width=\"%lf\" height =\"%lf\" rx=\"rx\" ry=\"ry\" stroke=\"%s\"  fill=\"%s\" stroke-width=\"%s\"/>\n",
+     fprintf(saida, "<rect x=\"%lf\" y=\"%lf\" width=\"%lf\" height =\"%lf\" rx=\"%lf\" ry=\"%lf\" stroke=\"%s\" fill=\"%s\" stroke-width=\"%s\"/>\n",
      x, y, w, h, rx, ry, corb, corp, rw);
 }
 

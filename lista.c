@@ -147,6 +147,7 @@ listaStruct insertBefore(listaStruct lista, tipo elemento, tipo elemento_2){
                     }
                     inicio = inicio->prox;
         }
+    return NULL;
 }
 
 listaStruct insertAfter(listaStruct lista, tipo elemento, tipo elemento_2){
@@ -180,6 +181,7 @@ listaStruct insertAfter(listaStruct lista, tipo elemento, tipo elemento_2){
                 }
                 inicio = inicio->prox;
             }
+    return NULL;
 }
 
 listaStruct removeElemento(listaStruct lista, tipo elemento){
@@ -316,7 +318,7 @@ int tamanhoLista(listaStruct lista){
     return tamanho;
 }
 
-Node comparaIdH(listaStruct lista, Node no, char *id){
+Node comparaIdH(Node no, char *id){
     tipo elemento;
          do{
             elemento = getElemento(no);
@@ -328,7 +330,7 @@ Node comparaIdH(listaStruct lista, Node no, char *id){
     return NULL;
 }
 
-Node comparaIdQ(listaStruct lista, Node no, char *id){
+Node comparaIdQ(Node no, char *id){
     tipo elemento;
          do{
             elemento = getElemento(no);
@@ -340,7 +342,7 @@ Node comparaIdQ(listaStruct lista, Node no, char *id){
     return NULL;
 }
 
-Node comparaIdR(listaStruct lista, Node no, char *id){
+Node comparaIdR(Node no, char *id){
     tipo elemento;
          do{
             elemento = getElemento(no);
@@ -352,7 +354,7 @@ Node comparaIdR(listaStruct lista, Node no, char *id){
     return NULL;
 }
 
-Node comparaIdS(listaStruct lista, Node no, char *id){
+Node comparaIdS(Node no, char *id){
     tipo elemento;
          do{
             elemento = getElemento(no);
