@@ -1,16 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "lista.h"
-#include "formaC.h"
-#include "formaL.h"
-#include "formaR.h"
-#include "formaT.h"
-#include "hidrante.h"
-#include "quadra.h"
-#include "radio.h"
-#include "semaforo.h"
-#include "svg.h"
 
 void desenhaSemaforo(FILE *saida, double x, double y, char *cfill, char *cstrk, char *sw){
     double w, h;
@@ -24,7 +14,7 @@ void desenhaRadio(FILE *saida, double x, double y, char *cfill, char *cstrk, cha
     double r;
     r = 6;
     fprintf(saida, "<circle cx=\"%lf\" cy=\"%lf\" r=\"%lf\" stroke=\"%s\" fill=\"%s\" stroke-width=\"%s\" />\n", 
-    x, y, r, cfill, cstrk, sw);
+    x, y, r, cstrk, cfill, sw);
 }
 
 void desenhaQuadra(FILE *saida, double x, double y, double w, double h, char *cfill, char *cstrk, char *sw){
@@ -36,7 +26,7 @@ void desenhaHidrante(FILE *saida, double x, double y, char *cfill, char *cstrk, 
     double r;
     r = 6;
     fprintf(saida, "<circle cx=\"%lf\" cy=\"%lf\" r=\"%lf\" stroke=\"%s\" fill=\"%s\" stroke-width=\"%s\" />\n", 
-    x, y, r, cfill, cstrk, sw);
+    x, y, r, cstrk, cfill, sw);
 }
 
 void desenhaTexto(FILE *saida, double x, double y, char *corb, char *corp, char *text){
@@ -45,7 +35,7 @@ void desenhaTexto(FILE *saida, double x, double y, char *corb, char *corp, char 
 }
 
 void desenhaRetangulo(FILE *saida, double x, double y, double w, double h, double rx, double ry, char *corp, char *corb, char *rw){
-     fprintf(saida, "<rect x=\"%lf\" y=\"%lf\" width=\"%lf\" height =\"%lf\" stroke=\"%s\" rx=\"%lf\" ry=\"%lf\" fill=\"%s\" stroke-width=\"%s\"/>\n",
+     fprintf(saida, "<rect x=\"%lf\" y=\"%lf\" width=\"%lf\" height =\"%lf\" rx=\"rx\" ry=\"ry\" stroke=\"%s\"  fill=\"%s\" stroke-width=\"%s\"/>\n",
      x, y, w, h, rx, ry, corb, corp, rw);
 }
 

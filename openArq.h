@@ -5,4 +5,6 @@
 
 void openGeo(Cidade listacidade);
 
+void openQry(Cidade listacidade);
+
 #endif

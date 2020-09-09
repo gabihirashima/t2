@@ -13,7 +13,7 @@ void desenhaHidrante(FILE *saida, double x, double y, char *cfill, char *cstrk, 
 
 void desenhaTexto(FILE *saida, double x, double y, char *corb, char *corp, char *text);
 
-void desenhaRetangulo(FILE *saida, double x, double y, double w, double h, double rx, double ry, char *corp, char *corb, char *rw){
+void desenhaRetangulo(FILE *saida, double x, double y, double w, double h, double rx, double ry, char *corp, char *corb, char *rw);
 
 void desenhaLinha(FILE *saida, double x1, double x2, double y1, double y2, char *corp, char *corb);
 

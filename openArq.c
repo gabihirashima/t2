@@ -118,7 +118,7 @@ void openGeo(Cidade listacidade)
 
                 else if((strcmp(comando, "s") == 0) && cont_ns < ns){
                     fscanf(arq, "%s %lf %lf", id, &x, &y);
-                    desenhaSemaforo(svg, x, y, cfillS, cstrkH, sw);
+                    desenhaSemaforo(svg, x, y, cfillS, cstrkS, sw);
                     elemento = criaSemaforo(id, x, y, cfillS, cstrkS);
                     insereElemento(getListaSemaforos(listacidade), elemento);
                     cont_ns += 1;
