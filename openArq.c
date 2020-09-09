@@ -100,7 +100,6 @@ void openGeo(Cidade listacidade)
 
                 else if((strcmp(comando, "q") == 0) && cont_nq < nq){
                     fscanf(arq, "%s %lf %lf %lf %lf", cep, &x, &y ,&w ,&h);
-                    //printf("%s %lf %lf %lf %lf\n", cep, x, y ,w ,h);
                     desenhaQuadra(svg, x, y, w, h, cfillQ, cstrkQ, sw);
                     elemento = criaQuadra(cep, x, y, w, h, cfillQ, cstrkQ);
                     printf("%s %lf %lf %lf %lf\n", getQuadraCep(elemento), getQuadraX(elemento), getQuadraY(elemento) ,getQuadraW(elemento) ,getQuadraH(elemento));
@@ -155,9 +154,6 @@ void openGeo(Cidade listacidade)
 
             fprintf(svg, "</svg>");
 
-
-
-            imprimeLista(getListaQuadras(listacidade), 'q');
           
     fclose(svg);
    fclose(arq);
@@ -195,7 +191,89 @@ void openQry(Cidade listacidade){
     entrada = fopen("del.qry", "r");
     saida = fopen("saidaQry.txt", "w+");
 
-       
+        while(fscanf(entrada, "%s", comando)!=EOF){
+
+            if(strcmp(comando, "dq") == 0){
+                fscanf(entrada, "%s", teste);
+
+                    if(strcmp(teste, "#") == 0){
+                        fscanf(entrada, "%s %lf", id, r);
+
+                            if(comparaIdH(noH, id) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um hidrante*/
+                                printf("\nIDH");
+                            }
+                            else if(comparaIdQ(noQ, id) != 0){/*Se compara Id retornar diferenete de NULL, o elemento é uma quadra*/
+                                printf("\nIDQ");
+                            }
+                            else if(comparaIdR(noR, id) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um rádio*/
+                                printf("\nIDR");
+                            }
+                            else if(comparaIdS(noS, id) != 0){/*Se comparaId retornar diferente de NULL, o elemento é uma quadra*/
+                                printf("\nIDS");
+                            }
+                        }
+                    else{
+                        strcpy(id, teste);
+                        fscanf(entrada, "%lf", r);
+
+                                if(comparaIdH(noH, id) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um hidrante*/
+                                    printf("\nIDH");
+                                }
+                                else if(comparaIdQ(noQ, id) != 0){/*Se compara Id retornar diferenete de NULL, o elemento é uma quadra*/
+                                    printf("\nIDQ");
+                                }
+                                else if(comparaIdR(noR, id) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um rádio*/
+                                    printf("\nIDR");
+                                }
+                                else if(comparaIdS(noS, id) != 0){/*Se comparaId retornar diferente de NULL, o elemento é uma quadra*/
+                                    printf("\nIDS");
+                                }   
+                    }
+            }
+
+            else if(strcmp(comando, "del") == 0){
+                fscanf(entrada, "%s", id);
+                    if(comparaIdH(noH, id) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um hidrante*/
+                        printf("\nIDH");
+                    }
+                    else if(comparaIdQ(noQ, id) != 0){/*Se compara Id retornar diferenete de NULL, o elemento é uma quadra*/
+                        printf("\nIDQ");
+                    }
+                    else if(comparaIdR(noR, id) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um rádio*/
+                        printf("\nIDR");
+                    }
+                    else if(comparaIdS(noS, id) != 0){/*Se comparaId retornar diferente de NULL, o elemento é uma quadra*/
+                        printf("\nIDS");
+                    }
+            }
+
+            else if(strcmp(comando, "cbq") == 0){
+                fscanf(entrada, "%lf %lf %lf %s", x, y, r, cStrk);
+
+            }
+
+            else if(strcmp(comando, "crd?") == 0){
+                fscanf(entrada, "%s", id);
+                
+                    if(comparaIdH(noH, id) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um hidrante*/
+                        printf("\nIDH");
+                    }
+                    else if(comparaIdQ(noQ, id) != 0){/*Se compara Id retornar diferenete de NULL, o elemento é uma quadra*/
+                        printf("\nIDQ");
+                    }
+                    else if(comparaIdR(noR, id) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um rádio*/
+                        printf("\nIDR");
+                    }
+                    else if(comparaIdS(noS, id) != 0){/*Se comparaId retornar diferente de NULL, o elemento é uma quadra*/
+                        printf("\nIDS");
+                    }
+            }
+
+            else if(strcmp(comando, "car") == 0){
+                fscanf(entrada, "%lf %lf %lf %lf", x, y, w, h);
+            }
+        
+        }
         
 
 
