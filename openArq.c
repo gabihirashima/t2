@@ -287,6 +287,7 @@ void tratamentoArquivos(char arquivoGeo[], char arquivoQry[], char diretorio[], 
                         strcpy(caminhoQry, arquivoQry);
                         /*printf("\n\ncaminho Qry sem argumento de diretorio: %s", caminhoQry);*/
                     }
+
             }
 
                 nomeArquivoGeo = (char*)malloc( ( ( strlen(arquivoGeo) )+1 )*sizeof(char) );

@@ -14,57 +14,101 @@
 
 int main (int argc, char *argv[]){
 
-    char *arquivoGeo = NULL; /*nome do arquivo .geo*/
-    char *arquivoQry = NULL; /*nome do arquivo .qry*/
-    char *diretorio = NULL; /*diretorio do arquivo .geo e .qry*/
-    char *pastaSaida = NULL; /*nome do arquivo de saida*/
+    char *geopath = NULL, *qrypath = NULL;
+    char *path = NULL, *outpath = NULL;
+    char *qryname = NULL, *geoname = NULL;
+    char *filename = NULL, *qname = NULL;
+    char *out = NULL, *qout = NULL;
 
-    for (int i = 0; i<argc; i++){ /* Função para captar os caracteres do terminal */
-          if ( strcmp(argv[i], "-e") == 0){
-                    i++;
-                if(argv[i] == NULL){
-                    perror("\nSem parametros validos em -e");
+        for(int i=1;i<argc;i++){
+            if (strcmp("-f",argv[i])==0){
+                i++;
+                if (argv[i] == NULL){
+                    perror("sem parametros em -f");
                     exit(1);
                 }
-                diretorio = (char*)malloc( ( ( strlen (argv[i]) )+1 )*sizeof(char) );
-                strcpy(diretorio, argv[i]);
+                geopath = malloc(strlen(argv[i])+1);
+                strcpy(geopath,argv[i]);
             }
-
-            else if ( strcmp(argv[i], "-f") == 0){
-                    i++;
-                if(argv[i] == NULL){
-                    perror("\nSem parametros validos -f");
+            else if (strcmp("-e",argv[i])==0){
+                i++;
+                if (argv[i] == NULL){
+                    perror("sem parametros em -e");
                     exit(1);
                 }
-                arquivoGeo = (char*)malloc( ( ( strlen (argv[i]) )+1)*sizeof(char) );
-                strcpy(arquivoGeo, argv[i]);
+                path = malloc(strlen(argv[i])+1);
+                strcpy(path,argv[i]);
             }
-
-            else if ( strcmp(argv[i], "-q") == 0){
-                    i++;
-                if(argv[i] == NULL){
-                    perror("\nSem parametros validos -q");
+            else if (strcmp("-q",argv[i])==0){
+                i++;
+                if (argv[i] == NULL){
+                    perror("sem parametros em -q");
                     exit(1);
                 }
-                arquivoQry = (char*)malloc( ( ( strlen(argv[i]) )+1 )*sizeof(char) );
-                strcpy(arquivoQry, argv[i]);
+                qrypath = malloc(strlen(argv[i])+1);
+                strcpy(qrypath,argv[i]);
             }
-
-            else if ( strcmp(argv[i], "-o") == 0){
-                    i++;
-                if(argv[i] == NULL){
-                    perror("\nSem parametros validos -o");
+            else if (strcmp("-o",argv[i])==0){
+                i++;
+                if (argv[i] == NULL){
+                    perror("sem parametros em -o");
                     exit(1);
                 }
-                pastaSaida = (char*)malloc( ( ( strlen(argv[i]) )+1 )*sizeof(char) );
-                strcpy(pastaSaida, argv[i]);
+                outpath = malloc(strlen(argv[i])+1);
+                strcpy(outpath,argv[i]);
             }
-    }
+        }
+        if (path != NULL) {
+            geoname = malloc(strlen(geopath)+strlen(path)+2);
+            sprintf(geoname,"%s/%s",path,geopath);
+            if (qrypath != NULL){
+                qryname = malloc(strlen(qrypath)+strlen(path)+2);
+                sprintf(qryname,"%s/%s",path,qrypath);
+            }
+        } else {
+            geoname = malloc(strlen(geopath)+1);
+            strcpy(geoname, geopath);
+            if(qrypath != NULL){
+                qryname = malloc(strlen(qrypath)+1);
+                strcpy(qryname, qrypath);
+            }
+        }
 
-    tratamentoArquivos(arquivoGeo, arquivoQry, diretorio, pastaSaida);
+        Cidade listaCidade = criaCidade();
 
-    free(arquivoGeo);
-    free(arquivoQry);
-    free(diretorio);
-    free(pastaSaida);
+        filename = trataNome(geopath);
+        out = malloc((strlen(filename)+strlen(outpath)+6));
+
+        sprintf(out,"%s/%s.svg",outpath,filename);
+
+        openGeo(listaCidade, geoname, out);
+
+            if(qrypath!=NULL){
+                qname = trataNome(qrypath);
+                qout = malloc((strlen(outpath)+strlen(filename)+strlen(qname)+3));
+                sprintf(qout,"%s/%s-%s",outpath,filename,qname);
+
+                openQry(listaCidade, qryname, qout);
+
+                free(qryname);
+                free(qout);
+                free(qrypath);
+            }
+        free(out);
+        free(geoname);
+        free(outpath);
+        free(path);
+        free(geopath);
+
+    liberaLista(getListaCirculos(listaCidade));
+    liberaLista(getListaRadios(listaCidade));
+    liberaLista(getListaHidrantes(listaCidade));
+    liberaLista(getListaQuadras(listaCidade));
+    liberaLista(getListaSemaforos(listaCidade));
+    liberaLista(getListaTexto(listaCidade));
+    liberaLista(getListaLinhas(listaCidade));
+    liberaLista(getListaRetangulos(listaCidade));
+
+    free(listaCidade);
+
 }
