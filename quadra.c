@@ -11,9 +11,10 @@ double w; /*largura da quadra*/
 double h; /*altura da quadra*/
 char cfill[20]; /*cor de preenchimento da quadra*/
 char cstrk[20]; /*cor da borda da quadra*/
+char sw[10]; /*espessura da borda da quadra*/
 }QuadraStruct;
 
-Quadra criaQuadra(char *cep, double x, double y, double w, double h, char *cfill, char *cstrk){
+Quadra criaQuadra(char *cep, double x, double y, double w, double h, char *cfill, char *cstrk, char *sw){
     QuadraStruct *q = (QuadraStruct*)malloc(sizeof(QuadraStruct));
     strcpy(q->cep, cep);
     q->x = x;
@@ -22,6 +23,7 @@ Quadra criaQuadra(char *cep, double x, double y, double w, double h, char *cfill
     q->h = h;
     strcpy(q->cfill, cfill);
     strcpy(q->cstrk, cstrk);
+    strcpy(q->sw, sw);
     return q;
 }
 

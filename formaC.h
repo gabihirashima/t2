@@ -5,7 +5,7 @@
 typedef void* Circulo;
 
 /*Cria um elemento do tipo Circulo e retorna o seu endereço*/
-Circulo criaCirculo(int, double, double, double, char *, char *);
+Circulo criaCirculo(int, double, double, double, char *, char *, char *);
 
 /*Recebe o endereço de uma lista de circulos e retorna o Id do elemento*/
 int getCirculoId(Circulo);

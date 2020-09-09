@@ -9,9 +9,10 @@ double x; /*coordenada x*/
 double y; /*coordenada y*/
 char cfill[20]; /*cor de preenchimento do objeto*/
 char cstrk[20]; /*cor da borda do objeto*/
+char sw[10]; /*espessura do objeto*/
 }HidranteStruct;
 
-Hidrante criaHidrante(char *id, double x, double y, char *cfill, char *cstrk){
+Hidrante criaHidrante(char *id, double x, double y, char *cfill, char *cstrk, char *sw){
     HidranteStruct *h =(HidranteStruct*)malloc(sizeof(HidranteStruct));
     strcpy(h->id, id);
     h->x = x;

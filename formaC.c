@@ -10,9 +10,10 @@ typedef struct formaCirculo{
   double y; /*pos y*/
   char corb[20]; /*cor da borda*/
   char corp[20]; /*cor de preenchimento*/
+  char cw[10]; /*espessura*/
 }CirculoStruct; 
 
-Circulo criaCirculo(int id, double r, double x, double y, char *corb, char *corp){
+Circulo criaCirculo(int id, double r, double x, double y, char *corb, char *corp, char *cw){
     CirculoStruct *c =(CirculoStruct*)malloc(sizeof(CirculoStruct));
     c->id = id;
     c->r = r;
@@ -20,6 +21,7 @@ Circulo criaCirculo(int id, double r, double x, double y, char *corb, char *corp
     c->y = y;
     strcpy(c->corb, corb);
     strcpy(c->corp, corp);
+    strcpy(c->cw, cw);
     return c;
 }
 

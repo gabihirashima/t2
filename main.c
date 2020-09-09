@@ -63,16 +63,8 @@ int main (int argc, char *argv[]){
 
     tratamentoArquivos(arquivoGeo, arquivoQry, diretorio, pastaSaida);
 
-    Cidade listaCidade = criaCidade();
-
-    liberaLista(getListaCirculos(listaCidade));
-    liberaLista(getListaRadios(listaCidade));
-    liberaLista(getListaHidrantes(listaCidade));
-    liberaLista(getListaQuadras(listaCidade));
-    liberaLista(getListaSemaforos(listaCidade));
-    liberaLista(getListaTexto(listaCidade));
-    liberaLista(getListaLinhas(listaCidade));
-    liberaLista(getListaRetangulos(listaCidade));
-
-    free(listaCidade);
+    free(arquivoGeo);
+    free(arquivoQry);
+    free(diretorio);
+    free(pastaSaida);
 }

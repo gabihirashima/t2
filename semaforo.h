@@ -5,7 +5,7 @@
 typedef void* Semaforo;
 
 /*Cria um elemento da struct Semaforo_S*/
-Semaforo criaSemaforo(char*, double, double, char *, char *);
+Semaforo criaSemaforo(char*, double, double, char *, char *, char *);
 
 /*Retorna Id de um elemento da lista de semaforos*/
 char *getSemaforoId(Semaforo);
