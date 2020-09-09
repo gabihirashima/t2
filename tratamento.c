@@ -7,6 +7,7 @@ void tratamentoGeo(char *arquivoGeo, char *nomeArquivoGeo, char *caminhoGeo, cha
         nomeArquivoGeo = (char*)malloc( ( ( strlen(arquivoGeo) )+1 )*sizeof(char) );
         strcpy(nomeArquivoGeo, arquivoGeo);
         nomeArquivoGeo = strtok(nomeArquivoGeo, "."); /*vai retornar somente o nome anterior ao .geo*/ 
+        printf("\n\nnome geo formatado: %s", nomeArquivoGeo);
 
         if (diretorio != NULL){/*Se foi passado um argumento de diretório*/
             caminhoGeo = (char*)malloc( ( ( strlen(diretorio) + strlen(arquivoGeo) )+3 )* sizeof(char) );
@@ -15,7 +16,7 @@ void tratamentoGeo(char *arquivoGeo, char *nomeArquivoGeo, char *caminhoGeo, cha
         else{/*Não foram passados argumentos para o diretório*/
             caminhoGeo =  (char*)malloc( ( (strlen(arquivoGeo) )+1 )* sizeof(char) );
             strcpy(caminhoGeo, arquivoGeo);
-            /*printf("\n\ncaminho Geo sem argumento de diretorio: %s", caminhoGeo);*/
+            printf("\n\ncaminho Geo sem argumento de diretorio: %s", caminhoGeo);
         }
 }
 
@@ -25,14 +26,14 @@ void tratamentoQry(char *arquivoQry, char *nomeArquivoQry, char *caminhoQry, cha
         if(arquivoQry !=  NULL){/*se foi passado um arquivo de qry*/
             caminhoQry = (char*)malloc( ( ( strlen(diretorio) + strlen(arquivoQry) )+3 )* sizeof(char) );
             sprintf(caminhoQry, "%s/%s", diretorio, arquivoQry);
-            /*printf("\n\ncaminho Qry com argumento de diretorio: %s", caminhoQry);*/
+            printf("\n\ncaminho Qry com argumento de diretorio: %s", caminhoQry);
         }
     }
     else{/*Não foram passados argumentos para o diretório*/
         if(arquivoQry != NULL){/*se foi passado um arquivo de qry*/
             caminhoQry = (char*)malloc( ( (strlen(arquivoQry) )+1 )* sizeof(char) );
             strcpy(caminhoQry, arquivoQry);
-            /*printf("\n\ncaminho Qry sem argumento de diretorio: %s", caminhoQry);*/
+            printf("\n\ncaminho Qry sem argumento de diretorio: %s", caminhoQry);
             }
     }
 
@@ -45,6 +46,20 @@ void tratamentoQry(char *arquivoQry, char *nomeArquivoQry, char *caminhoQry, cha
                     strcpy(tratamento, strrchr(arquivoQry, '/') ); /*vai retornar o nome após '/' */ 
                     printf("\n%s", tratamento);
                     strcpy(nomeArquivoQry, strtok(tratamento, "/") ); /*vai retornar o que vem antes da '/' */
-                    /*printf("\n\nnome Qry formatado: %s", nomeArquivoQry);*/
+                    printf("\n\nnome Qry formatado: %s", nomeArquivoQry);
     }
+}
+
+void tratamentoSaidas(char *pastaSaida, char *saidaSvg, char *saidaQry, char *nomeArquivoQry, char *arquivoQry, char *nomeArquivoGeo){
+    
+    saidaSvg =  (char*)malloc( ( (strlen(pastaSaida)+strlen(nomeArquivoGeo) )+8 )* sizeof(char) );        
+    sprintf(saidaSvg, "%s/%s.svg", pastaSaida, nomeArquivoGeo);
+    printf("\n\nsaida Svg: %s", saidaSvg);
+
+    if (arquivoQry != NULL){
+        saidaQry =  (char*)malloc( ( (strlen(pastaSaida)+strlen(nomeArquivoGeo)+strlen(nomeArquivoQry) )+4 )* sizeof(char) );
+        sprintf(saidaQry, "%s/%s-%s", pastaSaida, nomeArquivoGeo, nomeArquivoQry);
+         printf("\n\nsaida Qry: %s", saidaQry);
+    }
+
 }
