@@ -90,7 +90,7 @@ void delUrb(Cidade listaCidade, FILE *svg, FILE *txt, char *cid){
             strcpy(cstrk,getRadioCStroke(urb));
             strcpy(sw,getRadioSw(urb));
             removeElemento(listR,urb);
-            fprintf(txt, "%s %lf %lf %s %s %s",cid,x,y,cfill,cstrk, sw);
+            fprintf(txt, "\nId: %s  X: %lf  Y: %lf  Cfill: %s  CStrk: %s  Sw: %s",cid,x,y,cfill,cstrk, sw);
             desenhaLinha(svg, x, x, y, 0,"black");
             desenhaTexto(svg, x, 0, "black", "white", cid);
             break;
@@ -102,7 +102,7 @@ void delUrb(Cidade listaCidade, FILE *svg, FILE *txt, char *cid){
             strcpy(cstrk,getSemaforoCStroke(urb));
             strcpy(sw,getSemaforoSw(urb));
             removeElemento(listS,urb);
-            fprintf(txt, "%s %lf %lf %s %s %s",cid,x,y,cfill,cstrk, sw);
+            fprintf(txt, "\nId: %s  X: %lf  Y: %lf  Cfill: %s  Cstrk: %s  Sw:%s",cid,x,y,cfill,cstrk, sw);
             desenhaLinha(svg, x, x, y, 0,"black");
             desenhaTexto(svg, x, 0, "black", "white", cid);
             break;
@@ -114,7 +114,7 @@ void delUrb(Cidade listaCidade, FILE *svg, FILE *txt, char *cid){
             strcpy(cstrk,getHidranteCStroke(urb));
             strcpy(sw,getHidranteSw(urb));
             removeElemento(listH,urb);
-            fprintf(txt, "%s %lf %lf %s %s %s",cid,x,y,cfill,cstrk, sw);
+            fprintf(txt, "\nId: %s  X:%lf  Y: %lf  Cfill: %s  Cstrk: %s  Sw: %s",cid,x,y,cfill,cstrk, sw);
             desenhaLinha(svg, x, x, y, 0,"black");
             desenhaTexto(svg, x, 0, "black", "white", cid);
             break;
@@ -128,7 +128,7 @@ void delUrb(Cidade listaCidade, FILE *svg, FILE *txt, char *cid){
             strcpy(cstrk,getQuadraCStroke(urb));
             strcpy(sw,getQuadraSw(urb));
             removeElemento(listQ,urb);
-            fprintf(txt, "%s %lf %lf %lf %lf %s %s %s",cid,x,y,w,h,cfill,cstrk, sw);
+            fprintf(txt, "\nCep: %s  X: %lf  Y: %lf  W: %lf  H: %lf  Cfill: %s  CStrl:%s  Sw:%s",cid,x,y,w,h,cfill,cstrk, sw);
             desenhaLinha(svg, x + w/2, x, y + h/2, 0,"black");
             desenhaTexto(svg, x + w/2 + 3, 0, "black", "white", cid);
             break;
@@ -165,19 +165,19 @@ void coord(Cidade listaCidade, FILE *txt, char *cid){
     switch(type){
         case 'r':
             urb = comparaIdR(listaCidade,cid);
-            fprintf(txt,"\n%lf %lf Rádio-base",getRadioId(urb),getRadioX(urb),getRadioY(urb));
+            fprintf(txt,"\nId: %s  X: %lf  Y: %lf  Rádio-base",getRadioId(urb),getRadioX(urb),getRadioY(urb));
             break;
         case 's':
             urb = comparaIdS(listaCidade,cid);
-            fprintf(txt,"\n%lf %lf Semáforo",getSemaforoId(urb),getSemaforoX(urb),getSemaforoY(urb));
+            fprintf(txt,"\nId: %s  X: %lf Y: %lf  Semáforo",getSemaforoId(urb),getSemaforoX(urb),getSemaforoY(urb));
             break;
         case 'h':
             urb = comparaIdH(listaCidade,cid);
-            fprintf(txt,"\n%lf %lf Hidrante",getHidranteId(urb),getHidranteX(urb),getHidranteY(urb));
+            fprintf(txt,"\nId: %s  X: %lf Y: %lf Hidrante",getHidranteId(urb),getHidranteX(urb),getHidranteY(urb));
             break;
         default:
             urb = comparaIdQ(listaCidade,cid);
-            fprintf(txt,"\n%lf %lf Quadra",getQuadraCep(urb),getQuadraX(urb),getQuadraY(urb));
+            fprintf(txt,"\nId: %s  X: %lf  Y: %lf Quadra",getQuadraCep(urb),getQuadraX(urb),getQuadraY(urb));
             break;
     }
 }
@@ -198,7 +198,7 @@ void rectArea(Cidade listaCidade, FILE *svg, FILE *txt, double x, double y, doub
 
         if(qx >= x && qx + qw <= x + w && qy >= y && qy + qh <= y + h){
             A = qw*qh;
-            fprintf(txt, "\n%s %lf",getQuadraCep(q), A);
+            fprintf(txt, "\nCep: %s  Area: %lf",getQuadraCep(q), A);
             fprintf(svg,"<text x=\"%lf\" y=\"%lf\" stroke=\"%s\" fill=\"%s\">Area: %lf m²</text>\n", qx + qw/2, qy + qh/2, "black", "white", A);
         }
         AT += A;
