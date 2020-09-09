@@ -19,6 +19,4 @@ void desenhaLinha(FILE *saida, double x1, double x2, double y1, double y2, char 
 
 void desenhaCirculo(FILE *saida, double x, double y, double r, char *corp, char *corb, char *cw);
 
-void criaSvgGeo(Cidade listacidade, FILE *arq, char *sw, char *cw, char *rw);
-
 #endif
