@@ -180,7 +180,7 @@ void openQry(Cidade listacidade){
 
     tipo elemento;
 
-    entrada = fopen("car.qry", "r");
+    entrada = fopen("del.qry", "r");
     saida = fopen("saidaQry.txt", "w+");
 
     if(entrada == NULL){
