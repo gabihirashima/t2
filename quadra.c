@@ -61,3 +61,8 @@ char *getQuadraCStroke(Quadra quadra){
     QuadraStruct *q = (QuadraStruct*)quadra;
     return q->cstrk;
 }
+
+char *getQuadraSw(Quadra quadra){
+    QuadraStruct *q = (QuadraStruct*)quadra;
+    return q->sw;
+}

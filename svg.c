@@ -39,9 +39,9 @@ void desenhaRetangulo(FILE *saida, double x, double y, double w, double h, doubl
      x, y, w, h, rx, ry, corb, corp, rw);
 }
 
-void desenhaLinha(FILE *saida, double x1, double x2, double y1, double y2, char *corp, char *corb){
-    fprintf(saida, "<line x1=\"%lf\" y1=\"%lf\" x2=\"%lf\" y2=\"%lf\" stroke=\"%s\" fill = \"%s\" />\n",
-      x1, y1, x2, y2, corb, corp);
+void desenhaLinha(FILE *saida, double x1, double x2, double y1, double y2, char *corb){
+    fprintf(saida, "<line x1=\"%lf\" y1=\"%lf\" x2=\"%lf\" y2=\"%lf\" stroke=\"%s\"/>\n",
+      x1, y1, x2, y2, corb);
 }
 
 void desenhaCirculo(FILE *saida, double x, double y, double r, char *corp, char *corb, char *cw){

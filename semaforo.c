@@ -47,3 +47,8 @@ char *getSemaforoCStroke(Semaforo semaforo){
     SemaforoStruct *s = (Semaforo)semaforo;
     return s->cstrk;
 }
+
+char *getSemaforoSw(Semaforo semaforo){
+    SemaforoStruct *s = (Semaforo)semaforo;
+    return s->sw;
+}

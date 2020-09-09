@@ -46,3 +46,8 @@ char *getHidranteCStroke(Hidrante hidrante){
     HidranteStruct *h = (HidranteStruct*)hidrante;
     return h->cstrk;
 }
+
+char *getHidranteSw(Hidrante hidrante){
+    HidranteStruct *h = (HidranteStruct*)hidrante;
+    return h->sw;
+}

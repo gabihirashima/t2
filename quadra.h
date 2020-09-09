@@ -28,4 +28,6 @@ char *getQuadraCFill(Quadra);
 /*Retorna o CStroke de um elemento da lista de Quadras*/
 char *getQuadraCStroke(Quadra);
 
+char *getQuadraSw(Quadra quadra);
+
 #endif

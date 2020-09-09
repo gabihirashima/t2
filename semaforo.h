@@ -22,4 +22,6 @@ char *getSemaforoCFill(Semaforo);
 /*Retorna CStroke de um elemento da lista de semaforos*/
 char *getSemaforoCStroke(Semaforo);
 
+char *getSemaforoSw(Semaforo semaforo);
+
 #endif

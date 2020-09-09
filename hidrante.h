@@ -22,4 +22,6 @@ char *getHidranteCFill(Hidrante);
 /*Retorna CStroke de um elemento de uma lista de hidrantes*/
 char *getHidranteCStroke(Hidrante);
 
+char *getHidranteSw(Hidrante hidrante);
+
 #endif

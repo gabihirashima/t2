@@ -22,4 +22,6 @@ char *getRadioCFill(Radio);
 /*retorna o CStroke de um elemento da lista de radio*/
 char *getRadioCStroke(Radio);
 
+char *getRadioSw(Radio radio);
+
 #endif

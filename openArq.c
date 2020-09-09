@@ -210,32 +210,33 @@ void openQry(Cidade listacidade, char *entradaQry, char *saidaQry){
 
                     if(strcmp(teste, "#") == 0){
                         fscanf(entrada, "%s %lf", id, &r);
-                            
+                            delQuadras(listacidade, saidaTxt, saidaSvg, 1, id, r);
                     }
                     else{
                         strcpy(id, teste);
                         fscanf(entrada, "%lf", &r);
-                            
+                            delquadras(listacidade, saidaTxt, saidaSvg, 0, id, r);
                     }
             }
 
             else if(strcmp(comando, "del") == 0){
                 fscanf(entrada, "%s", id);
-                   
+                   delUrb(listacidade, saidaSvg, saidaTxt, id);
             }
 
             else if(strcmp(comando, "cbq") == 0){
                 fscanf(entrada, "%lf %lf %lf %s", &x, &y, &r, cStrk);
-
+                    colorBorder(listacidade, saidaTxt, x, y, r, cStrk);
             }
 
             else if(strcmp(comando, "crd?") == 0){
                 fscanf(entrada, "%s", id);
-                
+                    coord(listacidade, saidaTxt, id);
             }
 
             else if(strcmp(comando, "car") == 0){
-                fscanf(entrada, "%lf %lf %lf %lf", &x, &y, &w, &h);
+                fscanf(entrada, "%lf %lf %lf %lf", &x, &y, &w, &h); 
+                    rectArea(listacidade, saidaSvg, saidaTxt, x, y, w, h);
             }
         
         }
