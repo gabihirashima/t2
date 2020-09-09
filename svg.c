@@ -13,8 +13,8 @@ void desenhaSemaforo(FILE *saida, double x, double y, char *cfill, char *cstrk, 
 void desenhaRadio(FILE *saida, double x, double y, char *cfill, char *cstrk, char *sw){
     double r;
     r = 6;
-    fprintf(saida, "<circle cx=\"%lf\" cy=\"%lf\" r=\"%lf\" stroke=\"%s\" fill=\"%s\" stroke-width=\"%s\" />\n", 
-    x, y, r, cstrk, cfill, sw);
+    fprintf(saida, "<circle cx=\"%lf\" cy=\"%lf\" r=\"%lf\" fill=\"%s\" stroke=\"%s\" stroke-width=\"%s\" />\n", 
+    x, y, r, cfill, cstrk, sw);
 }
 
 void desenhaQuadra(FILE *saida, double x, double y, double w, double h, char *cfill, char *cstrk, char *sw){
@@ -25,8 +25,8 @@ void desenhaQuadra(FILE *saida, double x, double y, double w, double h, char *cf
 void desenhaHidrante(FILE *saida, double x, double y, char *cfill, char *cstrk, char *sw){
     double r;
     r = 6;
-    fprintf(saida, "<circle cx=\"%lf\" cy=\"%lf\" r=\"%lf\" stroke=\"%s\" fill=\"%s\" stroke-width=\"%s\" />\n", 
-    x, y, r, cstrk, cfill, sw);
+    fprintf(saida, "<circle cx=\"%lf\" cy=\"%lf\" r=\"%lf\" fill=\"%s\" stroke=\"%s\" stroke-width=\"%s\" />\n", 
+    x, y, r, cfill, cstrk, sw);
 }
 
 void desenhaTexto(FILE *saida, double x, double y, char *corb, char *corp, char *text){
