@@ -207,5 +207,5 @@ void rectArea(Cidade listaCidade, FILE *svg, FILE *txt, double x, double y, doub
     fprintf(txt,"\nArea total: %lf",AT);
     desenhaRetangulo(svg, x, y, w, h, 0, 0, "none", "black", "1.0px");
     desenhaLinha(svg, x, x, y, 0, "black");
-    fprint(svg,"<text x=\"%lf\" y=\"0\" stroke=\"%s\" fill=\"%s\">Area Total: %lf m²</text>\n", x+5, "black", "white", AT);
+    fprintf(svg,"<text x=\"%lf\" y=\"0\" stroke=\"%s\" fill=\"%s\">Area Total: %lf m²</text>\n", x+5, "black", "white", AT);
 }

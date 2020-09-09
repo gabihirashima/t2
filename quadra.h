@@ -30,4 +30,6 @@ char *getQuadraCStroke(Quadra);
 
 char *getQuadraSw(Quadra quadra);
 
+void setQuadCStroke(Quadra quadra, char *Cstroke);
+
 #endif
