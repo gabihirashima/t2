@@ -62,11 +62,15 @@ void openGeo(Cidade listacidade)
             exit(1);
         }
 
+<<<<<<< HEAD
         if(svg == NULL){
             printf("Erro ao abrir o arquivo Svg!!");
             system("pause");
             exit(1);
         }
+=======
+        fprintf(svg, "<svg>\n");
+>>>>>>> parent of b5d60f6... att
 
          while(fscanf(arq, "%s", comando) != EOF){
                 if(strcmp(comando, "nx") == 0){
@@ -183,38 +187,99 @@ void openQry(Cidade listacidade){
     entrada = fopen("del.qry", "r");
     saida = fopen("saidaQry.txt", "w+");
 
-    if(entrada == NULL){
-            printf("Erro ao abrir o arquivo entradaQry!!");
-            system("pause");
-            exit(1);
-        }
+        while(fscanf(entrada, "%s", comando)!=EOF){
 
-    if(saida == NULL){
-            printf("Erro ao abrir o arquivo saidaQry!!");
-            system("pause");
-            exit(1);
-        }
+                if(strcmp(comando, "dq") == 0){
+                    fscanf(entrada, "%s", teste);
+                        if(strcmp(teste, "#") == 0){
+                            fscanf(entrada, "%s %lf", id, &r);
+                                if(comparaId(listaH, noH, id) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um hidrante*/
 
-    while(fscanf(entrada, "%s", comando)!=EOF){
-            if(strcmp(comando, "del") == 0){
-                printf("\nentrou!");
+                                }
+                                else if(comparaId(listaQ, noQ, id) != 0){/*Se compara Id retornar diferenete de NULL, o elemento é uma quadra*/
+
+                                }
+                                else if(comparaId(listaR, noR, id) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um rádio*/
+
+                                }
+                                else if(comparaId(listaS, noS, id) != 0){/*Se comparaId retornar diferente de NULL, o elemento é uma quadra*/
+
+                                }
+                
+                        }
+                        else{
+                            fscanf(entrada, "%lf", &r);
+                                if(comparaId(listaH, noH, teste) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um hidrante*/
+
+                                }
+                                else if(comparaId(listaQ, noQ, teste) != 0){/*Se compara Id retornar diferenete de NULL, o elemento é uma quadra*/
+
+                                }
+                                else if(comparaId(listaR, noR, teste) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um rádio*/
+
+                                }
+                                else if(comparaId(listaS, noS, teste) != 0){/*Se comparaId retornar diferente de NULL, o elemento é uma quadra*/
+
+                                }
+                        }
+                }
+
+            else if(strcmp(comando, "del") == 0){
                 fscanf(entrada, "%s", id);
-                printf("\t%s", id);
                     if(comparaIdH(listaH, noH, id) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um hidrante*/
-                        printf("\nIDH");
+
                     }
                     else if(comparaIdQ(listaQ, noQ, id) != 0){/*Se compara Id retornar diferenete de NULL, o elemento é uma quadra*/
-                        printf("\nIDQ");
+
                     }
                     else if(comparaIdR(listaR, noR, id) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um rádio*/
-                        printf("\nIDR");
+
                     }
                     else if(comparaIdS(listaS, noS, id) != 0){/*Se comparaId retornar diferente de NULL, o elemento é uma quadra*/
-                        printf("\nIDS");
+
                     }
+            }
+
+            else if(strcmp(comando, "cbq") == 0){
+                fscanf(entrada, "%lf %lf %lf %s", &x, &y, &r, cStrk);
+                    if(comparaIdH(listaH, noH, id) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um hidrante*/
+
+                    }
+                    else if(comparaIdQ(listaQ, noQ, id) != 0){/*Se compara Id retornar diferenete de NULL, o elemento é uma quadra*/
+
+                    }
+                    else if(comparaIdR(listaR, noR, id) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um rádio*/
+
+                    }
+                    else if(comparaIdS(listaS, noS, id) != 0){/*Se comparaId retornar diferente de NULL, o elemento é uma quadra*/
+
+                    }
+            }
+
+            else if(strcmp(comando, "crd?") == 0){
+                fscanf(entrada, "%s", id);
+                    if(comparaIdH(listaH, noH, id) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um hidrante*/
+
+                    }
+                    else if(comparaIdQ(listaQ, noQ, id) != 0){/*Se compara Id retornar diferenete de NULL, o elemento é uma quadra*/
+
+                    }
+                    else if(comparaIdR(listaR, noR, id) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um rádio*/
+
+                    }
+                    else if(comparaIdS(listaS, noS, id) != 0){/*Se comparaId retornar diferente de NULL, o elemento é uma quadra*/
+
+                    }
+            }
+
+            else if(strcmp(comando, "car") == 0){
+                fscanf(entrada, "%lf %lf %lf %lf", &x, &y, &w, &h);
             }
         
         }
+
+
+
 
     fclose(saida);
     fclose(entrada);
