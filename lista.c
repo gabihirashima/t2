@@ -320,7 +320,7 @@ Node comparaIdH(listaStruct lista, Node no, char *id){
     tipo elemento;
          do{
             elemento = getElemento(no);
-                if(strcmp(getIdHidrante(elemento), id) == 0){
+                if(strcmp(getHidranteId(elemento), id) == 0){
                     return elemento;
                 }
             no = getNext(no);
@@ -332,7 +332,7 @@ Node comparaIdQ(listaStruct lista, Node no, char *id){
     tipo elemento;
          do{
             elemento = getElemento(no);
-                if(strcmp(getCepQuadra(elemento), id) == 0){
+                if(strcmp(getQuadraCep(elemento), id) == 0){
                     return elemento;
                 }
             no = getNext(no);
@@ -344,7 +344,7 @@ Node comparaIdR(listaStruct lista, Node no, char *id){
     tipo elemento;
          do{
             elemento = getElemento(no);
-                if(strcmp(getIdRadio(elemento), id) == 0){
+                if(strcmp(getRadioId(elemento), id) == 0){
                     return elemento;
                 }
             no = getNext(no);
@@ -356,7 +356,7 @@ Node comparaIdS(listaStruct lista, Node no, char *id){
     tipo elemento;
          do{
             elemento = getElemento(no);
-                if(strcmp(getIdSemaforo(elemento), id) == 0){
+                if(strcmp(getSemaforoId(elemento), id) == 0){
                     return elemento;
                 }
             no = getNext(no);
