@@ -51,12 +51,12 @@ tipo getElemento(Node elemento);
 
 void imprimeLista(listaStruct l, char c);
 
-Node comparaIdH(Node no, char *id);
+Node comparaIdH(Cidade listacidade, char *id);
 
-Node comparaIdQ(Node no, char *id);
+Node comparaIdQ(Cidade listacidade, char *id);
 
-Node comparaIdR(Node no, char *id);
+Node comparaIdR(Cidade listacidade, char *id);
 
-Node comparaIdS(Node no, char *id);
+Node comparaIdS(Cidade listacidade, char *id);
 
 #endif
