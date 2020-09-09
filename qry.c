@@ -21,7 +21,6 @@ Cidade delQuadras(Cidade listaCidade, FILE *txt, FILE *svg, int htag, char *id, 
     double x, y, qx, qy, w, h;
     
 
-
     switch(type){
         case 'r':
             ListEq = getListaRadios(listaCidade);

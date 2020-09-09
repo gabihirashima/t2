@@ -318,9 +318,7 @@ int tamanhoLista(listaStruct lista){
     return tamanho;
 }
 
-Node comparaIdH(Cidade listacidade, char *id){
-    listaStruct listH = getListaHidrantes(listacidade);
-    Node no = getFirst(listH);
+Node comparaIdH(Node no, char *id){
     tipo elemento;
          do{
             elemento = getElemento(no);
@@ -332,9 +330,7 @@ Node comparaIdH(Cidade listacidade, char *id){
     return NULL;
 }
 
-Node comparaIdQ(Cidade listacidade, char *id){
-    listaStruct listQ = getListaQuadras(listacidade);
-    Node no = getFirst(listQ);
+Node comparaIdQ(Node no, char *id){
     tipo elemento;
          do{
             elemento = getElemento(no);
@@ -346,23 +342,19 @@ Node comparaIdQ(Cidade listacidade, char *id){
     return NULL;
 }
 
-Node comparaIdR(Cidade listacidade, char *id){
-    listaStruct listR = getListaRadios(listacidade);
-    Node no = getFirst(listR);
+Node comparaIdR(Node no, char *id){
     tipo elemento;
          do{
             elemento = getElemento(no);
                 if(strcmp(getRadioId(elemento), id) == 0){
                     return elemento;
-            }
+                }
             no = getNext(no);
         }while(no != NULL);
     return NULL;
 }
 
-Node comparaIdS(Cidade listacidade, char *id){
-    listaStruct listS = getListaSemaforos(listacidade);
-    Node no = getFirst(listS);
+Node comparaIdS(Node no, char *id){
     tipo elemento;
          do{
             elemento = getElemento(no);
