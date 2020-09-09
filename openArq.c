@@ -12,6 +12,7 @@
 #include "lista.h"
 #include "openArq.h"
 #include "svg.h"
+#include "qry.h"
 
 void openGeo(Cidade listacidade)
 {
@@ -161,7 +162,7 @@ void openGeo(Cidade listacidade)
 
 void openQry(Cidade listacidade){
 
-    FILE *entrada, *saida;
+    FILE *entrada, *saidaSvg, *saidaTxt;
 
     char comando[6];
     char teste[20];
@@ -189,7 +190,8 @@ void openQry(Cidade listacidade){
     tipo elemento;
 
     entrada = fopen("del.qry", "r");
-    saida = fopen("saidaQry.txt", "w+");
+    saidaTxt = fopen("saidaQry.txt", "w+");
+    saidaSvg = fopen("saidaSvg.svg", "w+");
 
         while(fscanf(entrada, "%s", comando)!=EOF){
 
@@ -198,36 +200,12 @@ void openQry(Cidade listacidade){
 
                     if(strcmp(teste, "#") == 0){
                         fscanf(entrada, "%s %lf", id, r);
-
-                            if(comparaIdH(noH, id) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um hidrante*/
-                                printf("\nIDH");
-                            }
-                            else if(comparaIdQ(noQ, id) != 0){/*Se compara Id retornar diferenete de NULL, o elemento é uma quadra*/
-                                printf("\nIDQ");
-                            }
-                            else if(comparaIdR(noR, id) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um rádio*/
-                                printf("\nIDR");
-                            }
-                            else if(comparaIdS(noS, id) != 0){/*Se comparaId retornar diferente de NULL, o elemento é uma quadra*/
-                                printf("\nIDS");
-                            }
-                        }
+                            delQuadras(listacidade, saidaTxt, saidaSvg, 1, id, r);
+                    }
                     else{
                         strcpy(id, teste);
                         fscanf(entrada, "%lf", r);
-
-                                if(comparaIdH(noH, id) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um hidrante*/
-                                    printf("\nIDH");
-                                }
-                                else if(comparaIdQ(noQ, id) != 0){/*Se compara Id retornar diferenete de NULL, o elemento é uma quadra*/
-                                    printf("\nIDQ");
-                                }
-                                else if(comparaIdR(noR, id) != 0){/*Se compara Id retornar diferente de NULL, o elemento é um rádio*/
-                                    printf("\nIDR");
-                                }
-                                else if(comparaIdS(noS, id) != 0){/*Se comparaId retornar diferente de NULL, o elemento é uma quadra*/
-                                    printf("\nIDS");
-                                }   
+                            delQuadras(listacidade, saidaTxt, saidaSvg, 1, id, r);
                     }
             }
 
@@ -278,7 +256,7 @@ void openQry(Cidade listacidade){
 
 
 
-
-    fclose(saida);
+    fclose(saidaSvg);
+    fclose(saidaTxt);
     fclose(entrada);
 }
