@@ -14,11 +14,9 @@
 #include "svg.h"
 #include "qry.h"
 
-void openGeo(Cidade listacidade, char *nomeGeo, char *saidaSvg)
+void openGeo(Cidade listacidade, char *nomeGeo)
 {
-    FILE *arq, *svg; 
-
-    char comando[3];
+    char comando[4];
     char cfillQ[20];
     char cstrkQ[20];
     char cstrkH[20];
@@ -54,22 +52,15 @@ void openGeo(Cidade listacidade, char *nomeGeo, char *saidaSvg)
 
     tipo elemento;
 
+    FILE *arq;
+
     arq = fopen(nomeGeo, "r");
-    svg = fopen(saidaSvg, "w+");
 
         if(arq == NULL){
             printf("Erro ao abrir o arquivo Geo!!");
             system("pause");
             exit(1);
         }
-
-        if(svg == NULL){
-            printf("Erro ao abrir o arquivo Svg!!");
-            system("pause");
-            exit(1);
-        }
-
-        fprintf(svg, "<svg>\n");
 
        while(fscanf(arq, "%s", comando) != EOF){
                 if(strcmp(comando, "nx") == 0){
@@ -78,7 +69,6 @@ void openGeo(Cidade listacidade, char *nomeGeo, char *saidaSvg)
 
                 else if((strcmp(comando, "c") == 0) && cont_i < i){
                     fscanf(arq, "%d %lf %lf %lf %s %s", &id_forma, &r, &x, &y, corb, corp);
-                    desenhaCirculo(svg, x, y, r, corp, corb, cw); 
                     elemento = criaCirculo(id_forma, r, x, y, corb, corp, cw);
                     insereElemento(getListaCirculos(listacidade), elemento);
                     cont_i += 1;
@@ -86,7 +76,6 @@ void openGeo(Cidade listacidade, char *nomeGeo, char *saidaSvg)
 
                 else if((strcmp(comando, "r") == 0) && cont_i < i){
                     fscanf(arq, "%d %lf %lf %lf %lf %s %s", &id_forma, &w, &h, &x, &y, corb, corp); 
-                    desenhaRetangulo(svg, x, y, w, h, 0, 0, corp, corb, rw);
                     elemento = criaRetangulo(id_forma, w, h, x, y, 0, 0, corb, corp, rw);
                     insereElemento(getListaRetangulos(listacidade), elemento);
                     cont_i += 1;
@@ -94,14 +83,12 @@ void openGeo(Cidade listacidade, char *nomeGeo, char *saidaSvg)
 
                 else if(strcmp(comando, "t") == 0){
                     fscanf(arq, "%d %lf %lf %s %s %s", &id_forma, &x, &y, corb, corp, text); 
-                    desenhaTexto(svg, x, y, corb, corp, text);
                     elemento = criaTexto(id_forma, x, y, corb, corp, text);
                     insereElemento(getListaTexto(listacidade), elemento);
                 }
 
                 else if((strcmp(comando, "q") == 0) && cont_nq < nq){
                     fscanf(arq, "%s %lf %lf %lf %lf", cep, &x, &y ,&w ,&h);
-                    desenhaQuadra(svg, x, y, w, h, cfillQ, cstrkQ, sw);
                     elemento = criaQuadra(cep, x, y, w, h, cfillQ, cstrkQ, sw);
                     printf("%s %lf %lf %lf %lf\n", getQuadraCep(elemento), getQuadraX(elemento), getQuadraY(elemento) ,getQuadraW(elemento) ,getQuadraH(elemento));
                     insereElemento(getListaQuadras(listacidade), elemento);
@@ -110,7 +97,6 @@ void openGeo(Cidade listacidade, char *nomeGeo, char *saidaSvg)
 
                 else if((strcmp(comando, "h") == 0) && cont_nh < nh){
                     fscanf(arq, "%s %lf %lf", id, &x, &y);
-                    desenhaHidrante(svg, x, y, cfillH, cstrkH, sw);
                     elemento = criaHidrante(id, x, y, cfillH, cstrkH, sw);
                     insereElemento(getListaHidrantes(listacidade), elemento);
                     cont_nh += 1;
@@ -118,7 +104,6 @@ void openGeo(Cidade listacidade, char *nomeGeo, char *saidaSvg)
 
                 else if((strcmp(comando, "s") == 0) && cont_ns < ns){
                     fscanf(arq, "%s %lf %lf", id, &x, &y);
-                    desenhaSemaforo(svg, x, y, cfillS, cstrkS, sw);
                     elemento = criaSemaforo(id, x, y, cfillS, cstrkS, sw);
                     insereElemento(getListaSemaforos(listacidade), elemento);
                     cont_ns += 1;
@@ -126,7 +111,6 @@ void openGeo(Cidade listacidade, char *nomeGeo, char *saidaSvg)
 
                 else if((strcmp(comando, "rb") == 0) && cont_nr < nr){
                     fscanf(arq, "%s %lf %lf", id, &x, &y);
-                    desenhaRadio(svg, x, y, cfillR, cstrkR, sw);
                     elemento = criaRadio(id, x, y, cfillR, cstrkR, sw);
                     insereElemento(getListaRadios(listacidade), elemento);
                     cont_nr += 1;
@@ -153,10 +137,6 @@ void openGeo(Cidade listacidade, char *nomeGeo, char *saidaSvg)
                 }
             }
 
-            fprintf(svg, "</svg>");
-
-          
-    fclose(svg);
    fclose(arq);
 }
 
@@ -296,7 +276,7 @@ void tratamentoArquivos(char arquivoGeo[], char arquivoQry[], char diretorio[], 
                 sprintf(saidaSvg, "%s/%s.svg", pastaSaida, nomeArquivoGeo);
                 /*printf("\n\nsaida Svg: %s", saidaSvg);*/
 
-                openGeo(listaCidade, caminhoGeo, saidaSvg);
+                openGeo(listaCidade, caminhoGeo);
 
                 free(caminhoGeo);
                 free(saidaSvg);
