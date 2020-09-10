@@ -227,13 +227,6 @@ void openQry(Cidade listacidade, char *entradaQry, char *saidaQry){
     fclose(entrada);
 }
 
-char *trataNome(char nome[]){
-    char *aux = strrchr(nome, '/');
-        if(aux == NULL){
-            return strtok(nome, ".");
-        }
-    return strtok(&aux[1], ".");
-}
 
 void tratamentoArquivos(char arquivoGeo[], char arquivoQry[], char diretorio[], char pastaSaida[]){
 
@@ -270,7 +263,9 @@ void tratamentoArquivos(char arquivoGeo[], char arquivoQry[], char diretorio[], 
             }
 
                 nomeArquivoGeo = (char*)malloc( ( ( strlen(arquivoGeo) )+1 )*sizeof(char) );
-                arquivoGeo = trataNome(nomeArquivoGeo);
+                strcpy(nomeArquivoGeo, arquivoGeo);
+                nomeArquivoGeo = strtok(nomeArquivoGeo, "."); /*vai retornar somente o nome anterior ao .geo*/ 
+                /*printf("\n\nnome geo formatado: %s", nomeArquivoGeo);*/
 
                 saidaSvg =  (char*)malloc( ( (strlen(pastaSaida)+strlen(nomeArquivoGeo) )+8 )* sizeof(char) );
                 sprintf(saidaSvg, "%s/%s.svg", pastaSaida, nomeArquivoGeo);
@@ -282,8 +277,16 @@ void tratamentoArquivos(char arquivoGeo[], char arquivoQry[], char diretorio[], 
                 free(saidaSvg);
 
             if (arquivoQry != NULL){   
+                char *tratamento = NULL;   
                     nomeArquivoQry = (char*)malloc( (strlen(arquivoQry)+1) * sizeof(char) );
-                    nomeArquivoQry = trataNome(arquivoQry);
+                    tratamento = (char*)malloc( ( ( strlen(arquivoQry) )+1 )*sizeof(char) );
+                    strcpy(tratamento, arquivoQry);
+                    printf("\n%s", tratamento);
+                    strcpy(tratamento, strrchr(arquivoQry, '/') ); /*vai retornar o nome após '/' */ 
+                    printf("\n%s", tratamento);
+                    strcpy(nomeArquivoQry, strtok(tratamento, "/") ); /*vai retornar o que vem antes da '/' */
+
+
                     saidaQry =  (char*)malloc( ( (strlen(pastaSaida)+strlen(nomeArquivoGeo)+strlen(nomeArquivoQry) )+4 )* sizeof(char) );
                     sprintf(saidaQry, "%s/%s-%s", pastaSaida, nomeArquivoGeo, nomeArquivoQry);
                     /*printf("\n\nsaida Qry: %s", saidaQry);*/
@@ -293,6 +296,7 @@ void tratamentoArquivos(char arquivoGeo[], char arquivoQry[], char diretorio[], 
                     free(nomeArquivoQry);
                     free(caminhoQry);
                     free(saidaQry);
+                    free(tratamento);
             }
 
         free(nomeArquivoGeo);
